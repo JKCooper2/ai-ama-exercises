@@ -1,11 +1,12 @@
 from environment import VacuumEnvironment
 from agents import RandomAgent, ReflexAgent, InternalAgent
 
-ENV_SIZE = (10, 10)
+ENV_SIZE = (12, 12)
+DIRT_CHANCE = 0.05
 
 
 def main():
-    env = VacuumEnvironment(ENV_SIZE, 0.1)
+    env = VacuumEnvironment(ENV_SIZE, DIRT_CHANCE)
     agent = InternalAgent()
 
     print env.room[0]
