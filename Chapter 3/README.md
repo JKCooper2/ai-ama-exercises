@@ -36,41 +36,41 @@ becomes intolerable. There are no maps, and the natives are all locked indoors.
 
 ### Solution ###
 #### Q1 ####
-..* Initial State - x phone books containing n names
-..* Goal Test - Does the name match
-..* Operators - Select phone book: set of pages; select page: set of names; select name.
-..* Past Cost - Time taken to find name
-..* Algorithm - Select directory by town name, select page by start of last name, select name by first name
+⋅⋅* Initial State - x phone books containing n names
+⋅⋅* Goal Test - Does the name match
+⋅⋅* Operators - Select phone book: set of pages; select page: set of names; select name.
+⋅⋅* Past Cost - Time taken to find name
+⋅⋅* Algorithm - Select directory by town name, select page by start of last name, select name by first name
 #### Q2 ####
-..* Initial State - x phone books containing n names
-..* Goal Test - Does the name match
-..* Operators - Select phone book: set of pages; select page: set of names; select name.
-..* Past Cost - Time taken to find name
-..* Algorithm - Select directory by town name, go through each page searching for first-name
+⋅⋅* Initial State - x phone books containing n names
+⋅⋅* Goal Test - Does the name match
+⋅⋅* Operators - Select phone book: set of pages; select page: set of names; select name.
+⋅⋅* Past Cost - Time taken to find name
+⋅⋅* Algorithm - Select directory by town name, go through each page searching for first-name
 #### Q3 ####
-..* Initial State - Position lat/long/alt, location of sea
-..* Goal Test - Are you at the sea
-..* Operators - Walk
-..* Past Cost - Time taken to reach sea
-..* Algorithm - Follow stream downhill as sea is at 0 alt
+⋅⋅* Initial State - Position lat/long/alt, location of sea
+⋅⋅* Goal Test - Are you at the sea
+⋅⋅* Operators - Walk
+⋅⋅* Past Cost - Time taken to reach sea
+⋅⋅* Algorithm - Follow stream downhill as sea is at 0 alt
 #### Q4 ####
-..* Initial State - Position/Edges of planes
-..* Goal Test - Are all plane colored with no adjacent regions having matching colours
-..* Operators - Fill plane with 1 of four colours
-..* Past Cost - Number of actions required
-..* Algorithm - CSP, can use algorithms like Most Constrained Variable
+⋅⋅* Initial State - Position/Edges of planes
+⋅⋅* Goal Test - Are all plane colored with no adjacent regions having matching colours
+⋅⋅* Operators - Fill plane with 1 of four colours
+⋅⋅* Past Cost - Number of actions required
+⋅⋅* Algorithm - CSP, can use algorithms like Most Constrained Variable
 #### Q5 ####
-..* Initial State - Location of monkey, box and bananas
-..* Goal Test - Does the monkey have the bananas
-..* Operators - Monkey can move itself and the box
-..* Past Cost - Time taken
-..* Algorithm - Move box under bananas. Means-Ends Analysis
+⋅⋅* Initial State - Location of monkey, box and bananas
+⋅⋅* Goal Test - Does the monkey have the bananas
+⋅⋅* Operators - Monkey can move itself and the box
+⋅⋅* Past Cost - Time taken
+⋅⋅* Algorithm - Move box under bananas. Means-Ends Analysis
 #### Q6 ####
-..* Initial State - Town layout, your location
-..* Goal Test - Are you at the drug store
-..* Operators - Walk, look, make map
-..* Past Cost - Time taken
-..* Algorithm - Walk towards most built-up area and work out from there
+⋅⋅* Initial State - Town layout, your location
+⋅⋅* Goal Test - Are you at the drug store
+⋅⋅* Operators - Walk, look, make map
+⋅⋅* Past Cost - Time taken
+⋅⋅* Algorithm - Walk towards most built-up area and work out from there
 
 
 ## Exercise 3.4 ##
