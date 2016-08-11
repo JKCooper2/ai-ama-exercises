@@ -89,3 +89,123 @@ description is unsolvable because it only considers end points to be important, 
 a separate variable for who is sitting in the boat, rather than just who is on which side of the bank.
 
 May add actual solution as a later stage
+
+
+## Exercise 3.5 ##
+On page 76, we said that we would not consider problems with negative path costs. In this
+exercise, we explore this in more depth.
+
+1. Suppose that a negative lower bound c is placed on the cost of any given step — that is,
+negative costs are allowed, but the cost of a step cannot be less than c. Does this allow
+uniform-cost search to avoid searching the whole tree?
+2. Suppose that there is a set of operators that form a loop, so that executing the set in some
+order results in no net change to the state. If all of these operators have negative cost, what
+does this imply about the optimal behavior for an agent in such an environment? :
+3. One can easily imagine operators with high negative cost, even in domains such as route-finding.
+For example, some stretches of road might have such beautiful scenery as to far j
+outweigh the normal costs in terms of time and fuel. Explain, in precise terms, why humans
+do not drive round scenic loops indefinitely, and explain how to define the state space and I
+operators for route-finding so that artificial agents can also avoid looping.
+4. Can you think of a real domain in which step costs are such as to cause looping?
+
+### Solution ###
+
+1. Not if it wants to find the optimal solution, because there is always the possible of a loop of
+negative cost in the future that can undo all positive cost actions
+2. If they are the only negative cost nodes in the environment then the agents optimal behaviour is a continuous loop
+3. You can explain this by states having a bias that decays towards 0 each time the agent visits. It starts at a large
+negative cost and reduces down until taking the scenic route has less utility than taking the freeway
+4. If a vacuum bot's reward was based on only dirt picked up it could constantly loop picking up and putting down dirt
+
+
+## Exercise 3.6 ##
+The GENERAL-SEARCH algorithm consists of three steps: goal test, generate, and ordering function, in that order.
+It seems a shame to generate a node that is in fact a solution, but to fail to recognize it because the ordering
+function fails to place it first.
+
+1. Write a version of GENERAL-SEARCH that tests each node as soon as it is generated and stops immediately if it has found a goal.
+2. Show how the GENERAL-SEARCH algorithm can be used unchanged to do this by giving it the proper ordering function
+
+### Solution ###
+
+1. GeneralSearchImmediateCheck() in immediate_search.py
+2. BreadthFirstSearchImmediateCheck() in immediate_search.py
+
+
+## Exercise 3.7 ##
+The formulation of problem, solution, and search algorithm given in this chapter explicitly
+mentions the path to a goal state. This is because the path is important in many problems. For
+other problems, the path is irrelevant, and only the goal state matters. Consider the problem
+"Find the square root of 123454321." A search through the space of numbers may pass through
+many states, but the only one that matters is the goal state, the number 11111. Of course, from a
+theoretical point of view, it is easy to run the general search algorithm and then ignore all of the
+path except the goal state. But as a programmer, you may realize an efficiency gain by coding a
+version of the search algorithm that does not keep track of paths. Consider a version of problem
+solving where there are no paths and only the states matter. Write definitions of problem and
+solution, and the general search algorithm. Which of the problems in Section 3.3 would best use
+this algorithm, and which should use the version that keeps track of paths?
+
+### Solution ###
+Problem - Solving a jigsaw puzzle
+Solution - When each piece is in it's correct spot
+General Search - Where does each piece need to be placed
+
+Because all actions can be considered independently the ordering of the paths are irrelevant, and so the problem
+can be solved with needing to keep track of paths
+
+
+## Exercise 3.9 ##
+Describe a search space in which iterative deepening search performs much worse than depth-first search
+
+### Solution ###
+Depth First would perform better if the branching factor is very low but goal state quite deep, or the correct path
+happens to be down the path of the first options.
+
+
+## Exercise 3.10 ##
+Figure 3.17 shows a schematic view of bidirectional search. Why do you think we chose
+to show trees growing outward from the start and goal states, rather than two search trees growing
+horizontally toward each other
+
+### Solution ###
+The dimensions along with the search space expands is only dependent on the root node and search policy,
+the goal node could essentially be positioned around any point of the start node
+
+
+## Exercise 3.11 ##
+Write down the algorithm for bidirectional search, in pseudo-code or in a programming
+language. Assume that each search will be a breadth-first search, and that the forward and
+backward searches take turns expanding a node at a time. Be careful to avoid checking each node
+in the forward search against each node in the backward search
+
+### Solution ###
+BidirectionalSearch() in search.py. Uses updated GeneralSearch with hashed nodes and step expansion ability
+
+
+## Exercise 3.12 ##
+Give the time complexity of bidirectional search when the test for connecting the two
+searches is done by comparing a newly generated state in the forward direction against all the
+states generated in the backward direction, one at a time.
+
+### Solution ###
+O(n^2). Worst case every node gets compared to half the other nodes (constant factor)
+
+
+## Exercise 3.13 ##
+We said that at least one direction of a bidirectional search must be a breadth-first search.
+What would be a good choice for the other direction? Why?
+
+For optimality with constant step cost BFS or UCS will work, depth first could run into loops.
+From the goal-side searches point of view there is just has an additional goal node added every step.
+
+
+## Exercise 3.14 ##
+Consider the following operator for the 8-queens problem: place a queen in the column
+with the fewest un-attacked squares, in such a way that it does not attack any other queens. How
+many nodes does this expand before it finds a solution? (You may wish to have a program
+calculate this for you.)
+
+## Solution ##
+Run n_queens.py with search as relevant algorithm
+Using DepthFirst can solve in with approx 2,000 nodes expanded
+Using BreadthFirst can solve with approx 120,000 checks (much slowerfrom list concatenation as well)

@@ -1,6 +1,7 @@
 import numpy as np
 import copy
-from search import BreadthFirstSearch
+from search import BreadthFirstSearch, BidirectionalSearch
+from immediate_search import BreadthFirstSearchImmediateCheck
 
 
 class MissionaryCannibalEnv(object):
@@ -76,11 +77,12 @@ class MissionaryCannibalEnv(object):
 
 def main():
     env = MissionaryCannibalEnv()
-    search = BreadthFirstSearch(env.initial_state, env.expand_node, env.is_goal_state)
+    goal_state = np.array([[0, 0, 0], [3, 3, 1]])
+    search = BidirectionalSearch(env.initial_state, goal_state, env.expand_node)
 
     path = search.find_path()
 
-    if path is None:
+    if path is False:
         print "No solution possible"
     else:
         print "Solution found that achieves: ", path.state
