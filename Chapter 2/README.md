@@ -1,4 +1,5 @@
-# EXERCISES: #
+# Chapter 2 - Intelligent Agents #
+[Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-2-7503921)
 
 ## 2.5 ##
 Implement a performance-measuring environment simulator for the vacuum-cleaner  world.
