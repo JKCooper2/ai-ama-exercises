@@ -22,6 +22,7 @@ Give the initial state, goal test, operators, and path cost function for each of
 There are several possible formulations for each problem, with varying levels of detail. The
 main thing is that your formulations should be precise and "hang together" so that they could be
 implemented.
+
 1. You want to find the telephone number of Mr. Jimwill Zollicoffer, who lives in Alameda,
 given a stack of directories alphabetically ordered by city.
 2. As for part (a), but you have forgotten Jimwill's last name.
@@ -34,36 +35,42 @@ He would like to get the bananas.
 becomes intolerable. There are no maps, and the natives are all locked indoors.
 
 ### Solution ###
-1.  Initial State - x phone books containing n names
-..  Goal Test - Does the name match
-..  Operators - Select phone book: set of pages; select page: set of names; select name.
-..  Past Cost - Time taken to find name
-..  Algorithm - Select directory by town name, select page by start of last name, select name by first name
-2.  Initial State - x phone books containing n names
-..  Goal Test - Does the name match
-..  Operators - Select phone book: set of pages; select page: set of names; select name.
-..  Past Cost - Time taken to find name
-..  Algorithm - Select directory by town name, go through each page searching for first-name
-3.  Initial State - Position lat/long/alt, location of sea
-..  Goal Test - Are you at the sea
-..  Operators - Walk
-..  Past Cost - Time taken to reach sea
-..  Algorithm - Follow stream downhill as sea is at 0 alt
-4.  Initial State - Position/Edges of planes
-..  Goal Test - Are all plane colored with no adjacent regions having matching colours
-..  Operators - Fill plane with 1 of four colours
-..  Past Cost - Number of actions required
-..  Algorithm - CSP, can use algorithms like Most Constrained Variable
-5.  Initial State - Location of monkey, box and bananas
-..  Goal Test - Does the monkey have the bananas
-..  Operators - Monkey can move itself and the box
-..  Past Cost - Time taken
-..  Algorithm - Move box under bananas. Means-Ends Analysis
-6.  Initial State - Town layout, your location
-..  Goal Test - Are you at the drug store
-..  Operators - Walk, look, make map
-..  Past Cost - Time taken
-..  Algorithm - Walk towards most built-up area and work out from there
+#### Q1 ####
+..* Initial State - x phone books containing n names
+..* Goal Test - Does the name match
+..* Operators - Select phone book: set of pages; select page: set of names; select name.
+..* Past Cost - Time taken to find name
+..* Algorithm - Select directory by town name, select page by start of last name, select name by first name
+#### Q2 ####
+..* Initial State - x phone books containing n names
+..* Goal Test - Does the name match
+..* Operators - Select phone book: set of pages; select page: set of names; select name.
+..* Past Cost - Time taken to find name
+..* Algorithm - Select directory by town name, go through each page searching for first-name
+#### Q3 ####
+..* Initial State - Position lat/long/alt, location of sea
+..* Goal Test - Are you at the sea
+..* Operators - Walk
+..* Past Cost - Time taken to reach sea
+..* Algorithm - Follow stream downhill as sea is at 0 alt
+#### Q4 ####
+..* Initial State - Position/Edges of planes
+..* Goal Test - Are all plane colored with no adjacent regions having matching colours
+..* Operators - Fill plane with 1 of four colours
+..* Past Cost - Number of actions required
+..* Algorithm - CSP, can use algorithms like Most Constrained Variable
+#### Q5 ####
+..* Initial State - Location of monkey, box and bananas
+..* Goal Test - Does the monkey have the bananas
+..* Operators - Monkey can move itself and the box
+..* Past Cost - Time taken
+..* Algorithm - Move box under bananas. Means-Ends Analysis
+#### Q6 ####
+..* Initial State - Town layout, your location
+..* Goal Test - Are you at the drug store
+..* Operators - Walk, look, make map
+..* Past Cost - Time taken
+..* Algorithm - Walk towards most built-up area and work out from there
 
 
 ## Exercise 3.4 ##
