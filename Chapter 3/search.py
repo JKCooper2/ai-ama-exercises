@@ -45,6 +45,18 @@ class GeneralSearch(object):
     def queuing_function(self, nodes):
         raise NotImplementedError
 
+    def solution(self, node):
+        order = []
+
+        while node.parent is not None:
+            order.append(node.operator)
+            node = node.parent
+
+        order = order[::-1]  # Reverse order to go from root to end
+
+        return order
+
+
     def find_path(self, steps=None):
         i = 1
 
@@ -53,7 +65,7 @@ class GeneralSearch(object):
             print i, "-", node.depth, ":", len(self.queue.items)
             if self.goal_test(node):
                 print "FOUND SOLUTION"
-                return node
+                return self.solution(node), node.state
 
             # print "EXPANDING NODE:", node.state_hash
 
@@ -72,11 +84,11 @@ class GeneralSearch(object):
             self.queuing_function(expanded_nodes)
 
             if steps is not None and i >= steps:
-                return None
+                return None, None
 
             i += 1
 
-        return False
+        return False, None
 
 
 class BreadthFirstSearch(GeneralSearch):

@@ -91,11 +91,6 @@ class NQueens(object):
 
             return True
 
-        print np.sum(board)
-
-        # if np.sum(board) == len(board)-1:
-        #     print board
-
         if is_position_valid() and np.sum(board) == len(board):
             return True
 
@@ -173,6 +168,7 @@ def most_constrained_variable(node):
                     new_node.parent = node
                     new_node.depth = node.depth + 1
                     new_node.path_cost = node.path_cost + 1
+                    new_node.operator = (row, col)
 
                     available_positions.append(new_node)
 
@@ -185,10 +181,11 @@ def main():
 
     search = DepthFirstSearch(puzzle.board, most_constrained_variable, puzzle.goal_test)
 
-    path = search.find_path()
+    solution, state = search.find_path()
 
-    if path is not False:
-        print path.state
+    if solution is not False:
+        print solution
+        print state
     else:
         print "NO SOLUTION FOUND"
 

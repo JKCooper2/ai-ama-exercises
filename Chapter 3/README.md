@@ -206,6 +206,5 @@ many nodes does this expand before it finds a solution? (You may wish to have a 
 calculate this for you.)
 
 ## Solution ##
-Run n_queens.py with search as relevant algorithm
-Using DepthFirst can solve in with approx 2,000 nodes expanded
-Using BreadthFirst can solve with approx 120,000 checks (much slowerfrom list concatenation as well)
+Run n_queens.py with search as relevant algorithm. Using DepthFirst can solve in with approx 2,000 nodes expanded.
+Using BreadthFirst can solve with approx 120,000 checks (much slower from list concatenation as well)
