@@ -205,6 +205,22 @@ with the fewest un-attacked squares, in such a way that it does not attack any o
 many nodes does this expand before it finds a solution? (You may wish to have a program
 calculate this for you.)
 
-## Solution ##
+### Solution ###
 Run n_queens.py with search as relevant algorithm. Using DepthFirst can solve in with approx 2,000 nodes expanded.
 Using BreadthFirst can solve with approx 120,000 checks (much slower from list concatenation as well)
+
+
+## Exercise 3.15 ##
+The chain problem (Figure 3.20) consists of various lengths of chain that must be reconfigured
+into new arrangements. Operators can open one link and close one link. In the standard
+form of the problem, the initial state contains four chains, each with three links. The goal state
+consists of a single chain of 12 links in a circle. Set this up as a formal search problem and find
+the shortest solution.
+
+### Solution ###
+See chain_problem.py. Quite slow as deepcopy of node takes time and problem has high branching factor.
+Implementation slightly different to description as each side can be independently opened and closed,
+as opposed to link being open and having a maximum of 2 other links added. May revisit in future
+
+Shortest solution 8 actions for this model, either by opening and connecting each edge link,
+or by breaking apart one chain into 3 links and connecting each of them.

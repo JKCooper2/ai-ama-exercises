@@ -29,7 +29,10 @@ class Node(object):
 
     @property
     def state_hash(self):
-        return ''.join([str(item) for row in self.state for item in row])
+        try:
+            return ''.join([str(item) for row in self.state for item in row])
+        except:
+            return ''.join([str(item) for item in self.state])
 
 
 class GeneralSearch(object):
@@ -45,7 +48,8 @@ class GeneralSearch(object):
     def queuing_function(self, nodes):
         raise NotImplementedError
 
-    def solution(self, node):
+    @staticmethod
+    def solution(node):
         order = []
 
         while node.parent is not None:
@@ -55,7 +59,6 @@ class GeneralSearch(object):
         order = order[::-1]  # Reverse order to go from root to end
 
         return order
-
 
     def find_path(self, steps=None):
         i = 1
@@ -67,19 +70,11 @@ class GeneralSearch(object):
                 print "FOUND SOLUTION"
                 return self.solution(node), node.state
 
-            # print "EXPANDING NODE:", node.state_hash
-
             # Check for repeated states
             expanded_nodes = [new_node for new_node in self.expand_node(node) if new_node.state_hash not in self.hashes]
 
-            # if len(expanded_nodes) == 0:
-            #     print "No expansion possible"
-
             for new_node in expanded_nodes:
-                # print "Adding hash:", new_node.state_hash
                 self.hashes[new_node.state_hash] = new_node
-
-            print len(expanded_nodes)
 
             self.queuing_function(expanded_nodes)
 
@@ -105,6 +100,40 @@ class DepthFirstSearch(GeneralSearch):
 
     def queuing_function(self, nodes):
         self.queue.items = nodes + self.queue.items
+
+
+class DepthLimitedSearch(GeneralSearch):
+    def __init__(self, initial_state, expand_node, goal_test, depth_limit):
+        GeneralSearch.__init__(self, initial_state, expand_node, goal_test)
+        self.depth_limit = depth_limit
+
+    def queuing_function(self, nodes):
+        nodes = [node for node in nodes if node.depth <= self.depth_limit]
+        self.queue.items = nodes + self.queue.items
+
+
+class IterativeDeepeningSearch(object):
+    def __init__(self, initial_state, expand_node, goal_test, starting_depth, depth_limit):
+        self.starting_depth = starting_depth
+        self.depth_limit = depth_limit
+        self.initial_state = initial_state
+        self.expand_node = expand_node
+        self.goal_test = goal_test
+        self.search = None
+
+    def find_path(self, steps=None):
+        solution = None
+        state = None
+
+        for d in range(self.starting_depth, self.depth_limit+1):
+            print "Search with depth " + str(d)
+            self.search = DepthLimitedSearch(self.initial_state, self.expand_node, self.goal_test, d)
+            solution, state = self.search.find_path(steps)
+
+            if solution:
+                break
+
+        return solution, state
 
 
 class BidirectionalSearch(object):

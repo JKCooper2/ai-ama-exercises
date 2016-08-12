@@ -139,4 +139,3 @@ might be improved to handle more complex geographies.
 Agent could be improved by first identifying the edges of the location and then optimising a path through the
 remaining squares. Could also make actions based on largest area of unknown squares, or always choose unknown
 squares over known ones when available and moving towards a point.
-
