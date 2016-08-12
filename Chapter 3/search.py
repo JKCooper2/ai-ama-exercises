@@ -66,6 +66,7 @@ class GeneralSearch(object):
         while not self.queue.is_empty():
             node = self.queue.remove_front()
             print i, "-", node.depth, ":", len(self.queue.items)
+
             if self.goal_test(node):
                 print "FOUND SOLUTION"
                 return self.solution(node), node.state

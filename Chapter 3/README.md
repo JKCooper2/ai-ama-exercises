@@ -224,3 +224,45 @@ as opposed to link being open and having a maximum of 2 other links added. May r
 
 Shortest solution 8 actions for this model, either by opening and connecting each edge link,
 or by breaking apart one chain into 3 links and connecting each of them.
+
+
+## Exercise 3.16 ##
+Tests of human intelligence often contain sequence prediction problems. The aim in
+such problems is to predict the next member of a sequence of integers, assuming that the number
+in position n of the sequence is generated using some sequence function s(n), where the first
+element of the sequence corresponds to n = 0. For example, the function s(n) = 2**n generates the
+sequence [1,2,4,8,16, ...].
+
+In this exercise, you will design a problem-solving system capable of solving such prediction
+problems. The system will search the space of possible functions until it finds one that
+matches the observed sequence. The space of sequence functions that we will consider consists
+of all possible expressions built from the elements 1 and n, and the functions +, x, —, /, and
+exponentiation. For example, the function 2**n becomes (1 + 1)**n in this language. It will be useful
+to think of function expressions as binary trees, with operators at the internal nodes and 1 's and
+n's at the leaves.
+
+1. First, write the goal test function. Its argument will be a candidate sequence function s. It
+will contain the observed sequence of numbers as local state.
+2. Now write the successor function. Given a function expression s, it should generate all
+expressions one step more complex than s. This can be done by replacing any leaf of the
+expression with a two-leaf binary tree.
+3. Which of the algorithms discussed in this chapter would be suitable for this problem?
+Implement it and use it to find sequence expressions for the sequences [1,2,3,4,5],
+[1,2,4,8,16, ...],and [0.5,2,4.5,8].
+4. If level d of the search space contains all expressions of complexity d +1, where complexity
+is measured by the number of leaf nodes (e.g., n + (1 x n) has complexity 3), prove by
+induction that there are roughly 20**d*(d+1)! expressions at level d.
+5. Comment on the suitability of uninformed search algorithms for solving this problem. Can
+you suggest other approaches?
+
+### Solution ###
+1. See goal_test(node) in sequence_predictor.py
+2. See expand_node(node) in sequence_predictor.py
+3. [1,2,3,4,5] = (1 + n); [1,2,4,8,16, ...] = ((1+1)**n); [0.5,2,4.5,8] = ((n+1)**(1+1))/(1+1) (Manual guess,
+stopped program after 40,000 searches ~ 15 minutes)
+4. d layers ** (5 symbols [+, -, *, /, **] x 2 items [1, n] x (d-1)! groupings [() around sub groupings])
+= 10**(d*(d-1)!). Not sure how 20**d*(d+1)! came amount
+5. Very unsuitable, search space contains many reversible functions. Other approaches could be attempted to generate
+a range of valid values and use those in some way, e.g. store a way to get 2, 3, 4, 5 etc. in self contained nodes
+and then combine then with n. Or identify nodes that have no effect, like (n-n) = 0, and don't expand nodes
+containing those structures
