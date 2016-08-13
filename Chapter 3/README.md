@@ -301,3 +301,54 @@ To make this monotonic can make it 101 per action taken, 0 if sucking up dirt, 1
 (height * width) ^ actions where height and width are the number of new cells added. Percentage of dirt also
 has huge impact as each additional piece of dirt is normally 5 actions added [2 x turns, 2 x move, 1 x suck],
 e.g. 3x3 filled with dirt take around 28 actions (from manual solution), which is 28^5 states to expand
+
+
+## Exercise 3.18 ##
+The search agents we have discussed make use of a complete model of the world to
+construct a solution that they then execute. Modify the depth-first search algorithm with repeated
+state checking so that an agent can use it to explore an arbitrary vacuum world even without a
+model of the locations of walls and dirt. It should not get stuck even with loops or dead ends.
+You may also wish to have your agent construct an environment description of the type used by
+the standard search algorithms.
+
+### Solution ###
+All search classes implement state checking via state/operator hashing
+
+
+## Exercise 3.19 ##
+In discussing the cryptarithmetic problem, we proposed that an operator should assign
+a value to whichever letter has the least remaining possible values. Is this rule guaranteed to
+produce the smallest possible search space? Why (not)?
+
+### Solution ###
+No. Reducing the search space involves restricting possible actions, assigning a value based on variables
+with the least remaining possible values will have the opposite effect of keeping the branching factor high
+and therefore the search space large
+
+
+## Exercise 3.20 ##
+Define each of the following as constraint satisfaction problems:
+
+1. The cryptarithmetic problem.
+2. The channel-routing problem in VLSI layout.
+3. The map-coloring problem. In map-coloring, the aim is to color countries on a map using
+a given set of colors, such that no two adjacent countries are the same color.
+4. The rectilinear floor-planning problem, which involves finding non-overlapping places in
+a large rectangle for a number of smaller rectangles.
+
+### Solution ###
+1. * X = {(L1, ..., Ln), W1, W2, W3}  Each letter plus three words
+   * D = {(0, 1, ..., 9), [L1, ..., Ln], [L1, ..., Ln], [L1, ..., Ln]}  Holds a number or a list of letter
+   * C = { R(W1) + R(W2) = R(W3) } When letters are replaced (R) with numbers the sequence must be a valid addition
+
+2. Not sure how VLSI works, may come back to this
+
+3. * X = {(Countries)}  Each country defined by edges
+   * D = {(Colors)}  Set of colors
+   * C = { For all x1, x2 Adjacent(x1, x2) must have Color(x1) != Color(x2) }
+
+4. * X = {Large Rectangle Dimensions}
+   * D = {[Small rectangles]}
+   * C = { For All x Position(x) on the large rectangle there exists 1 PositionSR(x) or 0 PositionSR(x) }
+Logic is a bit rusty, may come back after later chapters
+
