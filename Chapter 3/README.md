@@ -266,3 +266,38 @@ stopped program after 40,000 searches ~ 15 minutes)
 a range of valid values and use those in some way, e.g. store a way to get 2, 3, 4, 5 etc. in self contained nodes
 and then combine then with n. Or identify nodes that have no effect, like (n-n) = 0, and don't expand nodes
 containing those structures
+
+
+## Exercise 3.17 ##
+The full vacuum world from the exercises in Chapter 2 can be viewed as a search problem
+in the sense we have defined, provided we assume that the initial state is completely known.
+
+1. Define the initial state, operators, goal test function, and path cost function.
+2. Which of the algorithms defined in this chapter would be appropriate for this problem?
+3. Apply one of them to compute an optimal sequence of actions for a 3 x 3 world with dirt in
+the center and home squares.
+4. Construct a search agent for the vacuum world, and evaluate its performance in a set of
+3x3 worlds with probability 0.2 of dirt in each square. Include the search cost as well as
+path cost in the performance measure, using a reasonable exchange rate.
+5. Compare the performance of your search agent with the performance of the agents constructed
+for the exercises in Chapter 2. What happens if you include computation time in
+the performance measure, at various "exchange rates" with respect to the cost of taking a
+step in the environment?
+6. Consider what would happen if the world was enlarged to n x n. How does the performance
+of the search agent vary with n? Of the reflex agents?
+
+### Solution ###
+1.  * Initial State: [[A->, D][D, E]]. Grid of 2x2 with agent in top left facing right and dirt in 2 squares
+  * Operators: Move Forward, Suck, Turn Left, Turn Right, Switch Off
+  * Goal Test: If there no dirt and is the agent switched off while sitting on the home square
+  * Path Cost: +1 per action taken, -100 for piece of dirt sucked up, 1000 for not being on home square when switching off.
+To make this monotonic can make it 101 per action taken, 0 if sucking up dirt, 1100 for not being on home square
+2. Uniform Cost. You want to minimise path cost while reaching the goal
+3. Set env = make_3x3() in vacuum_world.py and run using UniformCostSearch
+(UniformCost solves in 502, BreadthFirst in 624)
+4. Set env = make_random_3x3() in vacuum_world.py and include search_cost in search.find_path() arguments
+5. If the search cost is higher enough then it can be more effective to use a simpler agent
+6. Can create a standard VacuumEnvironment() and apply search to test this. Search space expands by roughly
+(height * width) ^ actions where height and width are the number of new cells added. Percentage of dirt also
+has huge impact as each additional piece of dirt is normally 5 actions added [2 x turns, 2 x move, 1 x suck],
+e.g. 3x3 filled with dirt take around 28 actions (from manual solution), which is 28^5 states to expand

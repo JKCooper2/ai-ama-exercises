@@ -30,9 +30,9 @@ class Node(object):
     @property
     def state_hash(self):
         try:
-            return ''.join([str(item) for row in self.state for item in row])
+            return ''.join([str(item) for row in self.state for item in row]) + str(self.operator if self.operator is not None else -1)
         except:
-            return ''.join([str(item) for item in self.state])
+            return ''.join([str(item) for item in self.state]) + self.operator
 
 
 class GeneralSearch(object):
@@ -60,21 +60,22 @@ class GeneralSearch(object):
 
         return order
 
-    def find_path(self, steps=None):
+    def find_path(self, steps=None, search_cost=0):
         i = 1
 
         while not self.queue.is_empty():
             node = self.queue.remove_front()
             print i, "-", node.depth, ":", len(self.queue.items)
+            # print "Checking " + node.state_hash
 
             if self.goal_test(node):
-                print "FOUND SOLUTION"
-                return self.solution(node), node.state
+                return self.solution(node), node
 
             # Check for repeated states
             expanded_nodes = [new_node for new_node in self.expand_node(node) if new_node.state_hash not in self.hashes]
 
             for new_node in expanded_nodes:
+                new_node.path_cost += search_cost  # Add search cost
                 self.hashes[new_node.state_hash] = new_node
 
             self.queuing_function(expanded_nodes)
@@ -93,6 +94,15 @@ class BreadthFirstSearch(GeneralSearch):
 
     def queuing_function(self, nodes):
         self.queue.items.extend(nodes)
+
+
+class UniformCostSearch(GeneralSearch):
+    def __init__(self, initial_state, expand_node, goal_test):
+        GeneralSearch.__init__(self, initial_state, expand_node, goal_test)
+
+    def queuing_function(self, nodes):
+        self.queue.items.extend(nodes)
+        self.queue.items.sort(key=lambda x: x.path_cost)
 
 
 class DepthFirstSearch(GeneralSearch):
@@ -122,14 +132,14 @@ class IterativeDeepeningSearch(object):
         self.goal_test = goal_test
         self.search = None
 
-    def find_path(self, steps=None):
+    def find_path(self, steps=None, search_cost=0):
         solution = None
         state = None
 
         for d in range(self.starting_depth, self.depth_limit+1):
             print "Search with depth " + str(d)
             self.search = DepthLimitedSearch(self.initial_state, self.expand_node, self.goal_test, d)
-            solution, state = self.search.find_path(steps)
+            solution, state = self.search.find_path(steps, search_cost=search_cost)
 
             if solution:
                 break
@@ -145,11 +155,11 @@ class BidirectionalSearch(object):
     def goal_test(self, node):
         return node.state_hash in self.goal.hashes and node.state_hash in self.start.hashes
 
-    def find_path(self):
+    def find_path(self, steps=None, search_cost=0):
         solution = None
 
         while solution is None:
-            solution = self.start.find_path(1)
-            solution = self.goal.find_path(1)
+            solution = self.start.find_path(1, search_cost=search_cost)
+            solution = self.goal.find_path(1, search_cost=search_cost)
 
         return solution
