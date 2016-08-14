@@ -1,5 +1,6 @@
 import copy
 
+
 class Variable(object):
     def __init__(self, domain):
         self.domain = domain

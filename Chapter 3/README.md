@@ -355,6 +355,7 @@ Logic is a bit rusty, may come back after later chapters
 
 ## Exercise 3.21 ##
 Implement a constraint satisfaction system as follows:
+
 1. Define a data-type for CSPs with finite, discrete domains. You will need to find a way to
 represent domains and constraints.
 2. Implement operators that assign values to variables, where the variables are assigned in a
@@ -366,7 +367,7 @@ fixed order at each level of the tree.
 
 ### Solution ###
 1. See classes Variable() and ConstraintSatisfactionProblem() in csp.py
-2. See solve() in ConstrainstSatisfactionSolver() in csp.py
+2. See solve() in ConstraintSatisfactionSolver() in csp.py
 3. See is_solution() in ConstraintSatisfactionProblem() in csp.py
 4. Check for if is_valid added to start of solve() as well as depth-first queuing at end of solve()
 5. See forward_checking() in ConstraintSatisfactionSolver()
