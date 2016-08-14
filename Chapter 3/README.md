@@ -352,3 +352,22 @@ a large rectangle for a number of smaller rectangles.
    * C = { For All x Position(x) on the large rectangle there exists 1 PositionSR(x) or 0 PositionSR(x) }
 Logic is a bit rusty, may come back after later chapters
 
+
+## Exercise 3.21 ##
+Implement a constraint satisfaction system as follows:
+1. Define a data-type for CSPs with finite, discrete domains. You will need to find a way to
+represent domains and constraints.
+2. Implement operators that assign values to variables, where the variables are assigned in a
+fixed order at each level of the tree.
+3. Implement a goal test that checks a complete state for satisfaction of all the constraints.
+4. Implement backtracking by modifying DEPTH-FIRST-SEARCH.
+5. Add forward checking to your backtracking algorithm.
+6. Run the three algorithms on some sample problems and compare their performance.
+
+### Solution ###
+1. See classes Variable() and ConstraintSatisfactionProblem() in csp.py
+2. See solve() in ConstrainstSatisfactionSolver() in csp.py
+3. See is_solution() in ConstraintSatisfactionProblem() in csp.py
+4. Check for if is_valid added to start of solve() as well as depth-first queuing at end of solve()
+5. See forward_checking() in ConstraintSatisfactionSolver()
+6. Trivial CSP with values in a 2x2 array with constraint and goal included in csp.py
