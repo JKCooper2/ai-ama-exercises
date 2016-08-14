@@ -108,6 +108,21 @@ estimated cost. A counter example would be f(successor(n)) = f(n) + g(n->success
 but not an admissible heuristic
 
 
+## Exercise 4.9 ##
+We gave two simple heuristics for the 8-puzzle: Manhattan distance and misplaced tiles.
+Several heuristics in the literature purport to be better than either of these. (See, for example, Nilsson
+(1971) for additional improvements on Manhattan distance, and Mostow and Prieditis (1989)
+for heuristics derived by semi-mechanical methods.) Test these claims by implementing the
+heuristics and comparing the performance of the resulting algorithms.
+
+### Solution ###
+See 8_puzzle.py for Env and informed_search.py for A* search
+Average Solve Times (nodes searched: moves taken)
+Manhattan Distance: (249: 17), (42: 13), (963: 17), (1583: 22), (1516: 22) ~ (871: 18 B* = 1.457)
+Euclidean Distance: (1091: 16), (1136: 21), (5153: 22), (2503: 18), (7809: 24) ~ (3538: 20 B* = 1.505)
+Misplaced Tiles: (3769: 18), (363: 12), (245: 11), (6314: 19), (15302: 21), (5198: 16 B* = 1.707)
+
+
 ## Exercise 4.10 ##
 Would a bidirectional A* search be a good idea? Under what conditions would it be applicable?
 Describe how the algorithm would work.
