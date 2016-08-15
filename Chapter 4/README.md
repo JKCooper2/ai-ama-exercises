@@ -118,9 +118,10 @@ heuristics and comparing the performance of the resulting algorithms.
 ### Solution ###
 See 8_puzzle.py for Env and informed_search.py for A* search
 Average Solve Times (nodes searched: moves taken)
+Sequence Score: (1063: 20), (1619: 14), (3927: 25), (703: 21), (5235: 28) ~ (2509: 21.6 B* = 1.437)
 Manhattan Distance: (249: 17), (42: 13), (963: 17), (1583: 22), (1516: 22) ~ (871: 18 B* = 1.457)
 Euclidean Distance: (1091: 16), (1136: 21), (5153: 22), (2503: 18), (7809: 24) ~ (3538: 20 B* = 1.505)
-Misplaced Tiles: (3769: 18), (363: 12), (245: 11), (6314: 19), (15302: 21), (5198: 16 B* = 1.707)
+Misplaced Tiles: (3769: 18), (363: 12), (245: 11), (6314: 19), (15302: 21) ~ (5198: 16 B* = 1.707)
 
 
 ## Exercise 4.10 ##

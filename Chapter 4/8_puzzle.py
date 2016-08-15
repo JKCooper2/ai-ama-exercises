@@ -107,6 +107,61 @@ class NPuzzle(object):
         return distance
 
     @staticmethod
+    def sequence_score(puzzle):
+        def adjacent_tiles(x, y, state):
+            atl = []
+
+            # Append adjacent tiles in order U, R, D, L with -1 for walls
+            try:
+                atl.append(state[x - 1][y])
+            except:
+                atl.append(-1)
+            try:
+                atl.append(state[x][y + 1])
+            except:
+                atl.append(-1)
+            try:
+                atl.append(state[x + 1][y])
+            except:
+                atl.append(-1)
+            try:
+                atl.append(state[x][y - 1])
+            except:
+                atl.append(-1)
+
+            return atl
+
+        # From http://www.cse.buffalo.edu/~rapaport/572/S02/nilsson.8puzzle.pdf
+        size = len(puzzle)
+
+        solution = np.array([range(1, 9) + [0]]).reshape((3, 3))
+
+        if size != 3:
+            raise ValueError("Heuristic only valid for 3x3 problems")
+
+        distance = 0
+
+        for i, row in enumerate(puzzle):
+            for j, tile in enumerate(row):
+                correct_row = np.floor(tile / size) - (1 if tile % size == 0 else 0)
+                correct_col = (tile % size - 1) % size
+
+                actual_adjacent_tiles = adjacent_tiles(i, j, puzzle)
+                correct_adjacent_tiles = adjacent_tiles(correct_row, correct_col, solution)
+
+                # For each adjacent square (and wall) add 2 points if square is incorrect and not a center piece
+                # and 1 point if the square is incorrect and is a center piece
+                for at in range(len(actual_adjacent_tiles)):
+                    if actual_adjacent_tiles[at] != correct_adjacent_tiles[at]:
+                        # If not center. Can be hardcoded because of restricted solution to 3x3
+                        if i == 1 and j == 1:
+                            distance += 1
+                        else:
+                            distance += 2
+
+        return distance
+
+    @staticmethod
     def expand_nodes(node):
         def create_new_node():
             nn = copy.copy(node)
@@ -160,13 +215,16 @@ class NPuzzle(object):
 def main():
     env = NPuzzle(3)
 
+    env.puzzle = np.array([[6, 3, 7], [1, 0, 5], [2, 8, 4]])
+
     print env.puzzle
 
     print "Manhattan Error: " + str(env.manhattan_distance(env.puzzle))
     print "Euclidean Error: " + str(env.euclidean_distance(env.puzzle))
     print "Misplaced Tiles: " + str(env.misplaced_tiles(env.puzzle))
+    print "Sequence Score: " + str(env.sequence_score(env.puzzle))
 
-    search = AStarSearch(env.puzzle, env.expand_nodes, env.goal_test, env.euclidean_distance)
+    search = AStarSearch(env.puzzle, env.expand_nodes, env.goal_test, env.sequence_score)
 
     solution, node = search.find_path()
 
@@ -177,8 +235,6 @@ def main():
 
     else:
         print "No solution found"
-
-
 
 
 if __name__ == "__main__":

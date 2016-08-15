@@ -72,7 +72,7 @@ class GeneralSearch(object):
 
         while not self.queue.is_empty():
             node = self.queue.remove_front()
-            print i, "-", node.total_cost, ":", len(self.queue.items)
+            print i, "-", round(node.total_cost, 3), ":", len(self.queue.items)
 
             if self.goal_test(node):
                 return self.solution(node), node
