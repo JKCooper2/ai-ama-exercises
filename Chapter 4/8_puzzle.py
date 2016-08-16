@@ -2,6 +2,7 @@ import numpy as np
 import copy
 from informed_search import AStarSearch
 
+
 class NPuzzle(object):
     def __init__(self, size):
         self.size = size

@@ -117,11 +117,13 @@ heuristics and comparing the performance of the resulting algorithms.
 
 ### Solution ###
 See 8_puzzle.py for Env and informed_search.py for A* search
+
 Average Solve Times (nodes searched: moves taken)
-Sequence Score: (1063: 20), (1619: 14), (3927: 25), (703: 21), (5235: 28) ~ (2509: 21.6 B* = 1.437)
-Manhattan Distance: (249: 17), (42: 13), (963: 17), (1583: 22), (1516: 22) ~ (871: 18 B* = 1.457)
-Euclidean Distance: (1091: 16), (1136: 21), (5153: 22), (2503: 18), (7809: 24) ~ (3538: 20 B* = 1.505)
-Misplaced Tiles: (3769: 18), (363: 12), (245: 11), (6314: 19), (15302: 21) ~ (5198: 16 B* = 1.707)
+
+  * [Sequence Score](http://www.cse.buffalo.edu/~rapaport/572/S02/nilsson.8puzzle.pdf): (1063: 20), (1619: 14), (3927: 25), (703: 21), (5235: 28) ~ (2509: 21.6 B* = 1.437)
+  * Manhattan Distance: (249: 17), (42: 13), (963: 17), (1583: 22), (1516: 22) ~ (871: 18 B* = 1.457)
+  * Euclidean Distance: (1091: 16), (1136: 21), (5153: 22), (2503: 18), (7809: 24) ~ (3538: 20 B* = 1.505)
+  * Misplaced Tiles: (3769: 18), (363: 12), (245: 11), (6314: 19), (15302: 21) ~ (5198: 16 B* = 1.707)
 
 
 ## Exercise 4.10 ##
@@ -134,3 +136,26 @@ expanding the node on it's side that minimises that distance. If there's a bottl
 solution path it could work well. Essentially you would run 2 A* where the evaluation function references the
 expand node list of the other, and loops through all expanded nodes of the other search to determine which
 node on it's side to expand next
+
+
+## Exercise 4.11 ##
+The travelling salesperson problem (TSP) can be solved using the minimum spanning tree (MST)
+heuristic, which is used to estimate the cost of completing a tour, given that a partial tour
+has already been constructed. The MST cost of a set of cities is the smallest sum of the link costs
+of any tree that connects all the cities.
+
+1. Show how this heuristic can be derived using a relaxed version of the TSP.
+2. Show that the MST heuristic dominates straight-line distance.
+3. Write a problem generator for instances of the TSP where cities are represented by random
+points in the unit square.
+4. Find an efficient algorithm in the literature for constructing the MST, and use it with an
+admissible search algorithm to solve instances of the TSP.
+
+### Solution ###
+1. The TSP can be defined as a traveller having to visit x cities, where each city is only visited once and they
+end up in their original city, with the goal to minimise the length travelled. MST is the same problem with the
+relaxations that cities can be visited more than once, and the cost to travel an already travelled path is 0
+2. MST dominates straight-line because it is is based on the minimum connection distance, making it an admissible heuristic
+3. See TravellingSalesman in travelling_salesman.py
+4. MST Algorithm in mst.py based on [this](http://people.csail.mit.edu/rivest/mst.py). See travelling_salesman.py
+for TSP solver.

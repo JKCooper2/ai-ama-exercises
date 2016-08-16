@@ -1,5 +1,3 @@
-import bisect
-
 
 class Queue(object):
     def __init__(self):
@@ -39,7 +37,7 @@ class Node(object):
         try:
             return ''.join([str(item) for row in self.state for item in row]) + str(self.operator if self.operator is not None else -1)
         except:
-            return ''.join([str(item) for item in self.state]) + self.operator
+            return ''.join([str(item) for item in self.state]) + str(self.operator if self.operator is not None else -1)
 
 
 class GeneralSearch(object):
