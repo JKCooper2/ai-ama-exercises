@@ -179,7 +179,7 @@ def main():
     size = 8
     puzzle = NQueens(size)
 
-    search = DepthFirstSearch(puzzle.board, most_constrained_variable, puzzle.goal_test)
+    search = BreadthFirstSearch(puzzle.board, most_constrained_variable, puzzle.goal_test)
 
     solution, state = search.find_path()
 

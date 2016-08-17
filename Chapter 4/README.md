@@ -159,3 +159,20 @@ relaxations that cities can be visited more than once, and the cost to travel an
 3. See TravellingSalesman in travelling_salesman.py
 4. MST Algorithm in mst.py based on [this](http://people.csail.mit.edu/rivest/mst.py). See travelling_salesman.py
 for TSP solver.
+
+
+## Exercise 4.12 ##
+Implement the n-queens problem and solve it using hill-climbing, hill-climbing with
+random restart, and simulated annealing. Measure the search cost and percentage of solved
+problems using randomly generated start states. Graph these against the difficulty of the problems
+(as measured by the optimal solution length). Comment on your results
+
+### Solution ###
+Tested over 100 trials of each (limited at 100 steps)
+98% solved in 20.1 moves - Hill Climbing No Sideways Movement Random Restart ~= (1-0.12)^(100/5.3)
+86% solved in 20.4 moves - Hill Climbing w/ Sideways Movement
+14% solved in 22.8 moves - Simulated Annealing (T: 1, A: 0.95)
+12% solved in 5.3 moves - Hill Climbing No Sideways Movement
+7% solved in 24 moves - Simulated Annealing (T: 1, A: 0.98)
+
+Not compared to optimal solutions because code to determine those is too slow to run 100 times per env
