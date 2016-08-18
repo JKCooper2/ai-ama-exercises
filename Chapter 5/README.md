@@ -9,7 +9,7 @@ n X's and no O's. Similarly, O[n] is the number of rows, columns, or diagonals w
 utility function thus assigns +1 to any position with X[3], = 1 and —1 to any position with O[3], - 1.
 
 All other terminal positions have utility 0. We will use a linear evaluation function defined as
-Eval = 3*X[2] + X[1] - (3*O[2] + O[1])
+`Eval = 3*X[2] + X[1] - (3*O[2] + O[1])``
 
 1. Approximately how many possible games of Tic-Tac-Toe are there?
 2. Show the whole game tree starting from an empty board down to depth 2, (i.e., one X and

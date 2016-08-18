@@ -176,3 +176,31 @@ Tested over 100 trials of each (limited at 100 steps)
 7% solved in 24 moves - Simulated Annealing (T: 1, A: 0.98)
 
 Not compared to optimal solutions because code to determine those is too slow to run 100 times per env
+
+
+## Exercise 4.13 ##
+Consider the problem of finding the shortest path between two points on a plane that has
+convex polygonal obstacles as shown in Figure 4.17. This is an idealization of the problem that
+a robot has to solve to navigate its way around a crowded environment.
+
+1. Suppose the state space consists of all positions (x,y) in the plane. How many states are
+there? How many paths are there to the goal?
+2. Explain briefly why the shortest path from one polygon vertex to any other in the scene
+must consist of straight-line segments joining some of the vertices of the polygons. Define
+a good state space now. How large is this state space?
+3. Define the necessary functions to implement the search problem, including a successor
+function that takes a vertex as input and returns the set of vertices that can be reached in
+a straight line from the given vertex. (Do not forget the neighbors on the same polygon.)
+Use the straight-line distance for the heuristic function.
+4. Implement any of the admissible algorithms discussed in the chapter. Keep the implementation
+of the algorithm completely independent of the specific domain. Then apply it to
+solve various problem instances in the domain.
+
+### Solution ### INCOMPLETE
+1. x * y possible states. Infinite because you can have loops
+2. Because the shortest distance between two points is a straight line, so the shortest distance between two points
+with an obstacle in the way is to wrap the path as close to a straight lines around those obstacles as possible.
+A good state space is therefore the points along the polygons plus the start and goal as all moves will involve
+starting at ending on one of these points. State Space = sum(Polygon Perimeters) + 2
+3. Not sure on an efficient way to generate and place polygons in a domain and track the intersection of lines
+over a discrete space. May come back to this in future
