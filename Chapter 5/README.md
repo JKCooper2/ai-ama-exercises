@@ -24,7 +24,7 @@ assuming the nodes are generated in the optimal order for alpha-beta pruning.
 ### Solution ###
 1. 9^3 (9 squares by 3 options [X, O, _] per square = 729
 2. Level 1:
-
+```
  X   Y   Z
 X__ _X_ ___
 ___ ___ _X_
@@ -45,6 +45,7 @@ ___ ___ ___ O__ _O_
 _O_ O__
 _X_ _X_
 ___ ___
+```
 
 3. A: 1, B: 0, C: 1, D: -1, E: 0
    F: -1, G: 0, H: -2, I: -1, J: 0
