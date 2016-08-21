@@ -150,3 +150,54 @@ need something more sophisticated? Why?
 Not sure what the backgammon model is, but to describe this you would need to expand the tree for each unknown space
 on the board each time. If the space returns a beep then you can fill it with a O and continue on that branch
 
+
+## Exercise 5.13 ##
+The Chinook checkers program makes extensive use of endgame databases, which provide
+exact values for every position within 6 moves of the end of the game. How might such databases
+be generated efficiently?
+
+### Solution ###
+By taking advantage of symmetry for both players and sides (reduces space by a factor of 4).
+
+
+## Exercise 5.14 ##
+Discuss how well the standard approach to game playing would apply to games such as
+tennis, pool, and croquet, which take place in a continuous, physical state space.
+
+### Solution ###
+Without modification the standard approach wouldn't work well. You would probably need to break time/space into tiles,
+or include a physic engine of some sort in the operator to get an idea of the results of an action. Continuous space
+makes search much more challenging
+
+
+## Exercise 5.15 ##
+For a game with which you are familiar, describe how an agent coduld be denned with
+condition-action rules, subgoals (and their conditions for generation), and action-utility rules,
+instead of by minimax search.
+
+### Solution ###
+For heads up poker you could define condition action rules including some history. Sub-goals include things like raising
+the expected value of each hand as high as possible.  Action Utility rules can include if has an unbeatable hand then
+utility is maxed
+
+
+## Exercise 5.16 ##
+The minimax algorithm returns the best move for MAX under the assumption that MIN
+plays optimally. What happens when MIN plays suboptimally?
+
+### Solution ###
+This can result in MAX receiving a sub optimal result. Minimax is always about raising the lower bound of the
+score received, and is not necessarily best for raising the average case
+
+
+## Exercise 5.17 ##
+We have assumed that the rules of each game define a utility function that is used by both
+players, and that a utility of x for MAX means a utility of — x for MIN. Games with this property
+are called zero-sum games. Describe how the minimax and alpha-beta algorithms change when
+we have nonzero-sum games—that is, when each player has his or her own utility function. You
+may assume that each player knows the other's utility function.
+
+### Solution ###
+In this case you can change the assumption to be that each player will act in their best interests. This means that
+the utility function will output 2 values (one for each player), and the algorithm will recursively raise up the
+utility set with the highest value for whichever players turn it is.
