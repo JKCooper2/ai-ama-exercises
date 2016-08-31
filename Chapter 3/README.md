@@ -1,6 +1,8 @@
 # Chapter 3 - Solving Problems By Searching #
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-3-7507199)
 
+To be completed:
+3.4
 
 ## Exercise 3.1 ##
 Explain why problem formulation must follow goal formulation
@@ -152,6 +154,16 @@ General Search - Where does each piece need to be placed
 
 Because all actions can be considered independently the ordering of the paths are irrelevant, and so the problem
 can be solved with needing to keep track of paths
+
+
+## Exercise 3.8 ##
+Given a pathless search algorithm such as the one called for in Exercise 3.7, explain how
+you can modify the operators to keep track of the paths as part of the information in a state. Show
+the operators needed to solve the route-finding and touring problems.
+
+### Solution ###
+Since the node contains the parent node and the operator, you can just trace back through to parent nodes to
+determine what operations where need to get to that point, without it needing to be contained in the state itself
 
 
 ## Exercise 3.9 ##

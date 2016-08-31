@@ -1,6 +1,8 @@
 # Chapter 6 - Propositional Logic #
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-6-agents-that-reason-logicaly-7511652)
 
+To be completed:
+6.11, 6.12, 6.13, 6.14, 6.15, 6.16
 
 ## Exercise 6.1 ##
 We said that truth tables can be used to establish the validity of a complex sentence. Show

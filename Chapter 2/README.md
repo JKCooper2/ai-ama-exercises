@@ -1,6 +1,8 @@
 # Chapter 2 - Intelligent Agents #
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-2-7503921)
 
+To be completed:
+2.6
 
 ## Exercise 2.1 ##
 What is the difference between a performance measure and a utility function?

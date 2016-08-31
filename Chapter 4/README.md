@@ -1,6 +1,8 @@
 # Chapter 4 - Informed Search Methods #
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-4-informed-search-methods-7509345)
 
+To be completed:
+4.13, 4.14, 4.15, 4.16, 4.17, 4.18
 
 ## Exercise 4.1 ##
 Suppose that we run a greedy search algorithm with h(n) = —g(n). What sort of search will

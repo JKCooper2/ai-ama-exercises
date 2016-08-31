@@ -1,6 +1,8 @@
 # Chapter 5 - Game Playing #
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-5-game-playing-7509366)
 
+To be completed:
+5.2, 5.3, 5.5, 5.11, 5.12
 
 ## Exercise 5.1 ##
 This problem exercises the basic concepts of game-playing using Tic-Tac-Toe (noughts and
