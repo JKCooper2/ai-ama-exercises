@@ -36,13 +36,13 @@ there any that initially confused you?
 
 ### Solution ###
 1. Valid - Something implies itself
-2. Neither - Nothing states that fire has to follow smoke
-3. Neither - Contraposition would require -Fire and -Smoke to be swapped
+2. Satisfiable - Nothing states that fire has to follow smoke
+3. Satisfiable - Contraposition would require -Fire and -Smoke to be swapped
 4. Valid - Either fire or -fire will always be true
-5. Neither - Invalid distribution of &
+5. Valid - If either imply then both must
 6. Valid - Adding a conjunct that doesn't negate maintains the original sentence
-7. Neither - Can be a model where some of the sentence is true
-8. Neither - States on big things can be dumb
+7. Valid - True if big, true if dumb, true if not big (default for false premise)
+8. Satisfiable - States on big things can be dumb
 
 
 ## Exercise 6.4 ##
@@ -128,4 +128,3 @@ Is this feasible? What effects does it have on the rest of the knowledge base?
 ### Solution ###
 This simply places the 64 rules under the definition of WumpusAhead, so the end result is just an additional rule
 being added rather which covers the rest
-

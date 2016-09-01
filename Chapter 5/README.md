@@ -2,7 +2,7 @@
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-5-game-playing-7509366)
 
 To be completed:
-5.2, 5.3, 5.5, 5.11, 5.12
+5.2, 5.3, 5.5
 
 ## Exercise 5.1 ##
 This problem exercises the basic concepts of game-playing using Tic-Tac-Toe (noughts and
@@ -151,6 +151,37 @@ need something more sophisticated? Why?
 ### Solution ###
 Not sure what the backgammon model is, but to describe this you would need to expand the tree for each unknown space
 on the board each time. If the space returns a beep then you can fill it with a O and continue on that branch
+
+
+## Exercise 5.11 ##
+Describe and/or implement state descriptions, move generators, and evaluation functions
+for one or more of the following games: backgammon, Monopoly, Scrabble, bridge (declarer
+play is easiest).
+
+### Solution ###
+For Scrabble:
+ - State description is the board tiles, letters placed, letters in the players hands, letters remaining in the bag
+ - Move generators are the list of available word combinations from the scrabble dictionary
+ - Evaluation Function: Current score (potentially with lookahead for potential high scores for the opponent)
+
+
+## Exercise 5.12 ##
+Consider carefully the interplay of chance events and partial information in each of the
+games in Exercise 5.11.
+
+1. For which is the standard expectiminimax model appropriate? Implement the algorithm
+and run it in your game-playing agent, with appropriate modifications to the game-playing
+environment.
+2. For which would the scheme described in Exercise 5.7 be appropriate?
+3. Discuss how you might deal with the fact that in some of the games, the players do not
+have the same knowledge of the current state.
+
+### Solution ###
+1. Expectimax should work for all due to chance nodes and the best operator depending on the outcomes
+2. It would give a reasonable approximation for most, but using 2 dice, or random letter tiles means
+it would quickly lead to an unlikely situation
+3. If the goal is the same (i.e. scrabble) you could check for possible words that would've score higher to see
+what isn't in the players hand.
 
 
 ## Exercise 5.13 ##

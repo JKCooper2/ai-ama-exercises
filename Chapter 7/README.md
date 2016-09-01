@@ -58,3 +58,67 @@ some of the time, but they can't fool all of the people all of the time.
 
 ### Solution ###
 See folder 7.2
+
+
+## Exercise 7.3 ##
+We noted that there is often confusion because the => connective does not correspond
+directly to the English "if ... then" construction. The following English sentences use "and,"
+"or," and "if" in ways that are quite different from first-order logic. For each sentence, give
+both a translation into first-order logic that preserves the intended meaning in English, and
+a straightforward translation (as if the logical connectives had their regular first-order logic
+meaning). Show an unintuitive consequence of the latter translation, and say whether each
+translation is valid, satisfiable or invalid.
+
+1. One more outburst like that and you'll be in contempt of court.
+2. Annie Hall is on TV tonight, if you're interested.
+3. Either the Red Sox win or I'm out ten dollars.
+4. The special this morning is ham and eggs.
+5. Maybe I'll come to the party and maybe I won't.
+6. Well, I like Sandy and I don't like Sandy.
+7. I don't jump off the Empire State Building implies if I jump off the Empire State Building
+then I float safely to the ground.
+8. It is not the case that if you attempt this exercise you will get an F. Therefore, you will
+attempt this exercise.
+9. If you lived here you would be home now. If you were home now, you would not be here.
+Therefore, if you lived here you would not be here.
+
+### Solution ###
+See Folder 7.3
+
+
+## Exercise 7.4 ##
+Give a predicate calculus sentence such that every world in which it is true contains exactly
+one object.
+
+### Solution ###
+See 7.4.jpg
+
+
+## Exercise 7.5 ##
+Represent the sentence "All Germans speak the same languages" in predicate calculus. Use
+Speaks(x, l), meaning that person x speaks language l.
+
+### Solution ###
+See 7.5.jpg
+
+
+## Exercise 7.6 ##
+Write axioms describing the predicates Grandchild, GreatGrandparent, Brother, Sister,
+Daughter, Son, Aunt, Uncle, Brother-In-Law, Sister-In-Law, and FirstCousin. Find out the proper
+definition of mth cousin n times removed, and write it in first-order logic.
+Write down the basic facts depicted in the family tree in Figure 7.4. Using the logical reasoning
+system in the code repository, TELL it all the sentences you have written down, and ASK it
+who are Elizabeth's grandchildren, Diana's brothers-in-law, and Zara's great-grandparents.
+
+### Solution ###
+See 7.6.jpg
+
+
+## Exercise 7.7 ##
+Explain what is wrong with the following proposed definition of the set membership
+predicate G :
+\forall x,s x \in {x|s}
+\forall x,s x \in s => \forall y x \in {y|s}
+
+### Solution ###
+The implication results in it being true when the premise is false
