@@ -2,7 +2,29 @@
 [Flashcards for chapter summary](http://www.cram.com/flashcards/chapter-1-7503903)
 
 To be completed:
-1.1, 1.7
+1.7
+
+## Exercise 1.1 ##
+Read Turing's original paper on AI (Turing, 1950). In the paper, he discusses several
+potential objections to his proposed enterprise and his test for intelligence. Which objections
+still carry some weight? Are his refutations valid? Can you think of new objections arising from
+developments since he wrote the paper? In the paper, he predicts that by the year 2000, a computer
+will have a 30% chance of passing a five-minute Turing Test with an unskilled interrogator. Do
+you think this is reasonable?
+
+### Solution ###
+The objections that are still commonly used are:
+ - Consciousness objection that machines can't feel emotions in the same way as humans
+ - Lady Lovelaces objection that machines can only do what they are programmed
+
+His refutations are valid but they work by clarifying what it means to be intelligent
+
+New objections may include things like that computers are designed to be sequential rather than parallel
+and whether it's possible to have computer based parallel cores operate quickly enough to simulate a brain
+
+Chat-bots are quite widely used (often for scamming people). This shows that if a person assumes they
+are talking with a human that they can be quite easily fooled.
+
 
 ## Exercise 1.2 ##
 We characterized the definitions of AI along two dimensions, human vs. ideal and thought
